@@ -1,0 +1,36 @@
+version: "1.1"
+
+services:
+  app:
+    container_name: jira-backend-board-app
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    networks:
+      - jira-network
+
+  postgres:
+    image: postgres:15
+    container_name: jira-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: jira
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - jira_pg_data:/var/lib/postgresql/data
+    networks:
+      - jira-network
+
+volumes:
+  jira_pg_data:
+
+networks:
+  jira-network:

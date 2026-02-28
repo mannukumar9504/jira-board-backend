@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+kind: Service
+metadata:
+  name: jira-board-backend-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: jira-board-backend-app
+  ports:
+    - port: 80
+      targetPort: 3000

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jira-board-backend-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jira-board-backend-app
+  template:
+    metadata:
+      labels:
+        app: jira-board-backend-app
+    spec:
+      containers:
+        - name: jira-board-backend-app
+          image: mannu9504/jira-board-backend-app:latest
+          ports:
+            - containerPort: 3000
