@@ -23,6 +23,9 @@ export class IssuesService {
   findOne(id: number) {
     return this.repo.findOneBy({ id });
   }
+  findOneByName(name: string) {
+    return this.repo.findOneBy({ name });
+  }
 
   async update(id: number, dto: UpdateIssueDto) {
     await this.repo.update(id, dto);

@@ -6,7 +6,8 @@ import {
   Param,
   Put,
   Delete,
-  ParseIntPipe
+  ParseIntPipe,
+  Query
 } from '@nestjs/common';
 import { IssuesService } from './issues.service';
 import { CreateIssueDto } from './dto/create-issue.dto';
@@ -27,6 +28,13 @@ export class IssuesController {
   findAll() {
     return this.issuesService.findAll();
   }
+ // get one by name
+ @Get()
+  findOneByName(@Query('name') name?: string) {
+    return this.issuesService.findOneByTitle(name || '');
+  }
+
+
 
   // ✅ Get one
   @Get(':id')
