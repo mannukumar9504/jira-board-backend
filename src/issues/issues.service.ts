@@ -23,8 +23,8 @@ export class IssuesService {
   findOne(id: number) {
     return this.repo.findOneBy({ id });
   }
-  findOneByName(name: string) {
-    return this.repo.findOneBy({ name });
+  findOneByTitle(title: string) {
+    return this.repo.findOneBy({ title });
   }
 
   async update(id: number, dto: UpdateIssueDto) {
